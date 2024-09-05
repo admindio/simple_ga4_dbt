@@ -1,4 +1,4 @@
-# simple-ga4-dbt
+# simple_ga4_dbt
 
 ## About
 This dbt package provides a simple, cost-effective way to process raw GA4 data into easy-to-access marts, with opinionated, majority-of-markters-approve defaults.
@@ -42,6 +42,7 @@ To Fill Out Later:
   - `pip install -r requirements.txt`
   - `dbt compile`
     - check that no errors (have dbt_project.yml set correctly)
-  - `dbt run`
+  - `dbt build`
 - DBT Cloud
-  - todo
+  - account settings -> projects -> new project
+  - add a new connection to BigQuery
