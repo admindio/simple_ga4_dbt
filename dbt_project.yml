@@ -28,8 +28,9 @@ models:
         - molly
       +materialized: incremental
 vars:
-  incremental_refresh_days: 3
+  incremental_refresh_days: 3 # Google says that daily aggregate tables can "settle" for up to 72 hours
   not_set_slug: (not set)
+  last_non_direct_lookback: 90 # GA4 default setting in the interface is 90 days
 #  dag_max_days: 3 Uncomment if you want to limit the days in the past the DBT will consider in the source data
   ga4_properties:
 #    - name: EXAMPLE

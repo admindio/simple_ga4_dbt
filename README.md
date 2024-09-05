@@ -29,6 +29,10 @@ To Fill Out Later:
 - aggregation ahead of viz
 - no dbt deps
 
+### Notes
+- comparison to GA4 UI
+- 
+
 ## Installation and Running
 - fill in vars in profile
 - CLI
