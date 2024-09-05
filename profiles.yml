@@ -1,0 +1,14 @@
+molly:
+  target: prod
+  outputs:
+    prod:
+      dataset: molly_simple_ga4_dbt
+      fixed_retries: 2
+      location: US
+      priority: interactive
+#      project: <INSERT YOUR GOOGLE CLOUD PROJECT HERE>
+      project: admindanalytics-ga4
+      threads: 8
+      job_execution_timeout_seconds: 900
+      type: bigquery
+      method: oauth

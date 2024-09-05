@@ -1,0 +1,43 @@
+name: simple_ga4_dbt
+version: 1.0.0
+config-version: 2
+profile: molly
+model-paths:
+  - models
+analysis-paths:
+  - analyses
+test-paths:
+  - tests
+seed-paths:
+  - seeds
+macro-paths:
+  - macros
+snapshot-paths:
+  - snapshots
+clean-targets:
+  - target
+  - dbt_packages
+models:
+  molly_dbt:
+    simple_ga4:
+      +schema: raw
+      +tags:
+        - simple
+    molly:
+      +tags:
+        - molly
+      +materialized: incremental
+vars:
+  incremental_refresh_days: 3
+  not_set_slug: (not set)
+#  dag_max_days: Uncomment if you want to limit the days in the past the DBT will consider in the source data
+  dag_max_days: 3
+  ga4_properties:
+#    - name: EXAMPLE
+#      source_gcp_project: example-ga4
+#      deleted: false
+#      dataset: analytics_111111111
+    - name: <INSERT A HUMAN READABLE NAME>
+      source_gcp_project: <INSERT GOOGLE CLOUD PROJECT ID>
+      deleted: false
+      dataset: <INSERT SOURCE GA4 ANALYTICS DATASET FROM BIG QUERY PROJECT>

@@ -1,0 +1,37 @@
+version: 2
+
+sources:
+  - name: ga4
+    description: GA4 from BigQuery. This is an example source only.
+    database: '{{ var("ga4_properties")[0]["source_gcp_project"] if var("ga4_properties")[0]["source_gcp_project"] is defined else target.database }}'
+    schema: '{{ var("ga4_properties")[0]["dataset"] }}'
+    tags:
+      - simple
+    tables:
+      - name: events
+        identifier: events_*
+        description: Raw GA4 events from BigQuery.
+        columns:
+          - name: event_date
+          - name: event_timestamp
+          - name: event_name
+          - name: event_params
+          - name: event_previous_timestamp
+          - name: event_value_in_usd
+          - name: event_bundle_sequence_id
+          - name: event_server_timestamp_offset
+          - name: user_id
+          - name: user_pseudo_id
+          - name: privacy_info
+          - name: user_properties
+          - name: user_first_touch_timestamp
+          - name: user_ltv
+          - name: device
+          - name: geo
+          - name: app_info
+          - name: traffic_source
+          - name: stream_id
+          - name: platform
+          - name: event_dimensions
+          - name: ecommerce
+          - name: items
