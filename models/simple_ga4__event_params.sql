@@ -24,7 +24,7 @@ with unnest_stuff as (
             '{{ NOT_SET }}'
         ) as event_parameter_value,
         date_tz
-    from {{ ref("events_") }}, unnest(event_params) as p
+    from {{ ref("simple_ga4__events") }}, unnest(event_params) as p
 )
 select
     event_id || key as id,

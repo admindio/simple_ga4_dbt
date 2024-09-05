@@ -1,7 +1,23 @@
 # simple_ga4_dbt
 
 ## About
-This dbt package provides a simple, cost-effective way to process raw GA4 data into easy-to-access marts, with opinionated, majority-of-markters-approve defaults.
+This dbt package provides a simple, cost-effective way to process raw GA4 data in BigQuery into easy-to-access marts, with opinionated, majority-of-markters-approved defaults.
+
+## Models
+
+![simple_ga4_dbt_dag.png](simple_ga4_dbt_dag.png)
+
+| Model                        | Description                                                                        | Materialization   |
+|------------------------------|------------------------------------------------------------------------------------|-------------------|
+| simple_ga4__events           | Sessionized clean events with many parameters flattened out.                       | incremental table |
+| simple_ga4__products         | Sessionized clean ecommerce-item events with many parameters flattened out.        | incremental table |
+| simple_ga4__event_parameters | All event parameters by key for when you need to deep dive into custom parameters. | view              |
+| simple_ga4__sessions         | Sessions with various metrics including last and last non direct attribution.      | incremental table |
+| simple_ga4__users            | Users with various metrics including first touch attribution.                      | view              |  
+
+
+
+## More about Molly 
 
 While it has substantial standalone value to data engineers, it also serves as the open source core for the GA4 portions the [Molly](https://www.admindanaltics.com/molly/?utm_source=github%20simple-ga4-dbt&utm_medium=referral&utm_content=README) GA4 addon. 
 

@@ -1,5 +1,5 @@
+-- This macro is from dbt_utils
 {%- macro generate_surrogate_key(field_list) -%}
-
 {%- if var('surrogate_key_treat_nulls_as_empty_strings', False) -%}
     {%- set default_null_value = "" -%}
 {%- else -%}

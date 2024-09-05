@@ -1,7 +1,8 @@
 name: simple_ga4_dbt
 version: 1.0.0
 config-version: 2
-profile: molly
+profile: simple_ga4
+
 model-paths:
   - models
 analysis-paths:
@@ -18,26 +19,21 @@ clean-targets:
   - target
   - dbt_packages
 models:
-  molly_dbt:
-    simple_ga4:
-      +schema: raw
-      +tags:
-        - simple
-    molly:
-      +tags:
-        - molly
-      +materialized: incremental
+  simple_ga4_dbt:
+    +schema: simple_ga4
+    +tags:
+      - simple
+    +materialized: incremental
 vars:
   incremental_refresh_days: 3 # Google says that daily aggregate tables can "settle" for up to 72 hours
   not_set_slug: (not set)
   last_non_direct_lookback: 90 # GA4 default setting in the interface is 90 days
-#  dag_max_days: 3 Uncomment if you want to limit the days in the past the DBT will consider in the source data
+# Uncomment dag_max_days if you want to limit the days in the past the DBT will consider in the source data.
+# This is handy for fast and cheap development work.
+#  dag_max_days: 3
+
+  # Your GA4 Properties. You can join in multiple GA4 properties by adding more items to the list.
   ga4_properties:
-#    - name: EXAMPLE
-#      source_gcp_project: example-ga4
-#      deleted: false
-#      dataset: analytics_111111111
-    - name: <INSERT A HUMAN READABLE NAME>
-      source_gcp_project: <INSERT GOOGLE CLOUD PROJECT ID>
-      deleted: false
-      dataset: <INSERT SOURCE GA4 ANALYTICS DATASET FROM BIG QUERY PROJECT>
+    - name: my-website.org  # This is a human-readable name for the GA4 data stream. Useful especially when combining multiple GA4 data streams.
+      source_gcp_project: example-ga4  # This is your GA4 source GCP project
+      dataset: analytics_111111111  # This is your GA4 dataset ID

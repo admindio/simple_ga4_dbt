@@ -50,7 +50,7 @@ with events as (
         event_params,
 
         case when ga_session_number = 1 then 'New' else 'Returning' end as user_type,
-    from {{ ref('events_') }}
+    from {{ ref("simple_ga4__events") }}
     where 1=1
     {% if is_incremental() %}
         --re-run given number of days every incremental run
