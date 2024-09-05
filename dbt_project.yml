@@ -30,8 +30,7 @@ models:
 vars:
   incremental_refresh_days: 3
   not_set_slug: (not set)
-#  dag_max_days: Uncomment if you want to limit the days in the past the DBT will consider in the source data
-  dag_max_days: 3
+#  dag_max_days: 3 Uncomment if you want to limit the days in the past the DBT will consider in the source data
   ga4_properties:
 #    - name: EXAMPLE
 #      source_gcp_project: example-ga4
