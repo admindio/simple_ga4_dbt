@@ -82,7 +82,7 @@ with first_attribution as (
 
 
         first_value(session_start_at_utc) over (partition by user_pseudo_id order by session_start_at_utc asc) as first_session_start_at_utc,
-    from {{ ref("sessions_") }}
+    from {{ ref("simple_ga4__sessions") }}
 )
 select
     s.user_pseudo_id as id,
@@ -98,6 +98,6 @@ select
     sum(duration_seconds) as total_session_duration,
     sum(engaged_seconds) as total_engaged_seconds,
     sum(event_count) as total_events,
-from {{ ref('sessions_') }} s
+from {{ ref("simple_ga4__sessions") }} s
     left join first_attribution fst on s.user_pseudo_id = fst.user_pseudo_id
 group by 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48

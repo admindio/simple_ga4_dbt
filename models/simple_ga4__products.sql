@@ -90,7 +90,7 @@ select
 {#    sum(case when event_name = 'purchase' then e.ecommerce_shipping_value_in_usd else 0 end) as shipping_value_in_usd,#}
 {#    sum(case when event_name = 'purchase' then e.ecommerce_tax_value_in_usd else 0 end) as tax_value_in_usd,#}
 {#    sum(case when event_name = 'refund' then i.item_refund_in_usd else 0 end) as item_refund_in_usd,#}
-from {{ ref("events_") }} e, unnest(items) as i
+from {{ ref("simple_ga4__events") }} e, unnest(items) as i
 where 1=1
     {% if is_incremental() %}
         --re-run given number of days every incremental run
