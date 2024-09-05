@@ -39,4 +39,4 @@ To Fill Out Later:
   - gcloud
   - python (3.10)
 - DBT Cloud
-  - 
+  - todo
