@@ -38,5 +38,10 @@ To Fill Out Later:
 - CLI
   - gcloud
   - python (3.10)
+  - prefer to setup virtualenv
+  - `pip install -r requirements.txt`
+  - `dbt compile`
+    - check that no errors (have dbt_project.yml set correctly)
+  - `dbt run`
 - DBT Cloud
   - todo
